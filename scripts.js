@@ -16,7 +16,6 @@ let discoOrigpaq0 = parseInt(prompt("Disco Orig Paquete 0 ", "FAIL"), 10);
 let discoOrigpaq1 = parseInt(prompt("Disco Orig Paquete 1 ", "FAIL"), 10);
 let discoEsppaq0 = parseInt(prompt("Disco Esp Paquete 0 ", "FAIL"), 10);
 let discoEsppaq1 = parseInt(prompt("Disco Esp Paquete 1 ", "FAIL"), 10);
-
 let cantPet = parseInt(prompt("CUANTAS PETICIONES", "FAIL"), 10);
 
 for (i = 0; i < cantPet; i++) {
@@ -28,6 +27,7 @@ for (i = 0; i < cantPet; i++) {
         10
     );
     cuentaPeticion++;
+    let lectoEscritura = prompt("E para escritura, L para lectura");
     console.log(`-----PETICION ${cuentaPeticion} AL SECTOR ${peticion}-----`);
 
     let sectoresXCilindro = carasUtilizables * sectoresXPista;
@@ -51,12 +51,23 @@ for (i = 0; i < cantPet; i++) {
             distanciaEsp1 = Math.abs(peticion - discoEsppaq1);
             distanciaOrig1 = Math.abs(peticion - discoOrigpaq1);
 
-            if (distanciaEsp1 < distanciaOrig1) {
-                puntoInicio = discoEsppaq1;
-                band = 2;
-            } else {
-                puntoInicio = discoOrigpaq1;
-                band = 3;
+            if (lectoEscritura === "E") {
+                if (distanciaEsp1 > distanciaOrig1) {
+                    puntoInicio = discoEsppaq1;
+                    band = 2;
+                } else {
+                    puntoInicio = discoOrigpaq1;
+                    band = 3;
+                }
+            }
+            else {
+                if (distanciaEsp1 < distanciaOrig1) {
+                    puntoInicio = discoEsppaq1;
+                    band = 2;
+                } else {
+                    puntoInicio = discoOrigpaq1;
+                    band = 3;
+                }
             }
         }
     } else {
@@ -67,12 +78,24 @@ for (i = 0; i < cantPet; i++) {
             distanciaEsp0 = Math.abs(peticion - discoEsppaq0);
             distanciaOrig0 = Math.abs(peticion - discoOrigpaq0);
 
-            if (distanciaEsp0 < distanciaOrig0) {
-                puntoInicio = discoEsppaq0;
-                band = 5;
-            } else {
-                puntoInicio = discoOrigpaq0;
-                band = 6;
+            if (lectoEscritura === "E")
+            {
+                if (distanciaEsp0 > distanciaOrig0) {
+                    puntoInicio = discoEsppaq0;
+                    band = 5;
+                } else {
+                    puntoInicio = discoOrigpaq0;
+                    band = 6;
+                }
+            }
+            else {
+                if (distanciaEsp0 < distanciaOrig0) {
+                    puntoInicio = discoEsppaq0;
+                    band = 5;
+                } else {
+                    puntoInicio = discoOrigpaq0;
+                    band = 6;
+                }
             }
         }
     }
@@ -147,4 +170,17 @@ for (i = 0; i < cantPet; i++) {
             discoOrigpaq0 = sectorMeta;
             break;
     }
+
+    if (lectoEscritura === "E" && (band === 1 || band === 2 || band === 3)) {
+        discoOrigpaq1 = sectorMeta;
+        discoEsppaq1 = sectorMeta;
+    }
+    else if (lectoEscritura === "E" && (band === 4 || band === 5 || band === 6)) {
+        discoOrigpaq0 = sectorMeta;
+        discoEsppaq0 = sectorMeta;
+    }
+    console.log(`DISCO ORIG PAQ O: ${discoOrigpaq0}`);
+    console.log(`DISCO ORIG PAQ 1: ${discoOrigpaq1}`);
+    console.log(`DISCO ESP PAQ 0: ${discoEsppaq0}`);
+    console.log(`DISCO ESP PAQ 1: ${discoEsppaq1}`);
 }
