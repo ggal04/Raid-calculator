@@ -59,8 +59,7 @@ for (i = 0; i < cantPet; i++) {
                     puntoInicio = discoOrigpaq1;
                     band = 3;
                 }
-            }
-            else {
+            } else {
                 if (distanciaEsp1 < distanciaOrig1) {
                     puntoInicio = discoEsppaq1;
                     band = 2;
@@ -78,8 +77,7 @@ for (i = 0; i < cantPet; i++) {
             distanciaEsp0 = Math.abs(peticion - discoEsppaq0);
             distanciaOrig0 = Math.abs(peticion - discoOrigpaq0);
 
-            if (lectoEscritura === "E")
-            {
+            if (lectoEscritura === "E") {
                 if (distanciaEsp0 > distanciaOrig0) {
                     puntoInicio = discoEsppaq0;
                     band = 5;
@@ -87,8 +85,7 @@ for (i = 0; i < cantPet; i++) {
                     puntoInicio = discoOrigpaq0;
                     band = 6;
                 }
-            }
-            else {
+            } else {
                 if (distanciaEsp0 < distanciaOrig0) {
                     puntoInicio = discoEsppaq0;
                     band = 5;
@@ -111,7 +108,7 @@ for (i = 0; i < cantPet; i++) {
     console.log(`Sec voy: ${secVoy}`);
     console.log(`Cyl voy: ${cylVoy}`);
 
-    let seekTime = Math.abs((cylEstoy - cylVoy) * pasoCilindro);
+    let seekTime = Math.abs(cylEstoy - cylVoy) * pasoCilindro;
     seekTime = seekTime.toFixed(2);
     console.log(`SEEKTIME: ${seekTime} ms`);
 
@@ -146,38 +143,40 @@ for (i = 0; i < cantPet; i++) {
     console.log(`SEARCHTIME: ${searchTime} (redondea esrte poutput manual)`);
     searchTime = parseFloat(prompt("Refonfear manualmente", "FAIL"));
     console.log(`SEARCHTIME BIEN: ${searchTime} `);
-    console.log(`ACCESS TIME: ${parseFloat(seekTime)+parseFloat(searchTime)}`);
-
-    switch (band) {
-        case 1:
-            discoOrigpaq1 = sectorMeta;
-            discoEsppaq1 = sectorMeta;
-            break;
-        case 2:
-            discoEsppaq1 = sectorMeta;
-            break;
-        case 3:
-            discoOrigpaq1 = sectorMeta;
-            break;
-        case 4:
-            discoOrigpaq0 = sectorMeta;
-            discoEsppaq0 = sectorMeta;
-            break;
-        case 5:
-            discoEsppaq0 = sectorMeta;
-            break;
-        case 6:
-            discoOrigpaq0 = sectorMeta;
-            break;
-    }
+    console.log(
+        `ACCESS TIME: ${parseFloat(seekTime) + parseFloat(searchTime)}`
+    );
 
     if (lectoEscritura === "E" && (band === 1 || band === 2 || band === 3)) {
         discoOrigpaq1 = sectorMeta;
         discoEsppaq1 = sectorMeta;
-    }
-    else if (lectoEscritura === "E" && (band === 4 || band === 5 || band === 6)) {
+    } else if (
+        lectoEscritura === "E" &&
+        (band === 4 || band === 5 || band === 6)
+    ) {
         discoOrigpaq0 = sectorMeta;
         discoEsppaq0 = sectorMeta;
+    } else {
+        switch (band) {
+            case 1:
+                discoOrigpaq1 = sectorMeta;
+                break;
+            case 2:
+                discoEsppaq1 = sectorMeta;
+                break;
+            case 3:
+                discoOrigpaq1 = sectorMeta;
+                break;
+            case 4:
+                discoOrigpaq0 = sectorMeta;
+                break;
+            case 5:
+                discoEsppaq0 = sectorMeta;
+                break;
+            case 6:
+                discoOrigpaq0 = sectorMeta;
+                break;
+        }
     }
     console.log(`DISCO ORIG PAQ O: ${discoOrigpaq0}`);
     console.log(`DISCO ORIG PAQ 1: ${discoOrigpaq1}`);
