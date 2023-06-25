@@ -48,8 +48,8 @@ for (i = 0; i < cantPet; i++) {
             puntoInicio = discoOrigpaq1;
             band = 1;
         } else {
-            distanciaEsp1 = Math.abs(peticion - discoEsppaq1);
-            distanciaOrig1 = Math.abs(peticion - discoOrigpaq1);
+            distanciaEsp1 = Math.abs(sectorMeta - discoEsppaq1);
+            distanciaOrig1 = Math.abs(sectorMeta - discoOrigpaq1);
 
             if (lectoEscritura === "E") {
                 if (distanciaEsp1 > distanciaOrig1) {
@@ -74,8 +74,8 @@ for (i = 0; i < cantPet; i++) {
             puntoInicio = discoOrigpaq0;
             band = 4;
         } else {
-            distanciaEsp0 = Math.abs(peticion - discoEsppaq0);
-            distanciaOrig0 = Math.abs(peticion - discoOrigpaq0);
+            distanciaEsp0 = Math.abs(sectorMeta - discoEsppaq0);
+            distanciaOrig0 = Math.abs(sectorMeta - discoOrigpaq0);
 
             if (lectoEscritura === "E") {
                 if (distanciaEsp0 > distanciaOrig0) {
