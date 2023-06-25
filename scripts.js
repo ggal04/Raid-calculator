@@ -19,7 +19,7 @@ let discoEsppaq1 = parseInt(prompt("Disco Esp Paquete 1 ", "FAIL"), 10);
 
 let cantPet = parseInt(prompt("CUANTAS PETICIONES", "FAIL"), 10);
 
-for (i = 0; i !== cantPet; i++) {
+for (i = 0; i < cantPet; i++) {
     let peticion = parseInt(
         prompt(
             "Peticion en numeros (si te dan sectores y cilindfros, TODO TODO TODO TODO:",
@@ -52,10 +52,10 @@ for (i = 0; i !== cantPet; i++) {
             distanciaOrig1 = Math.abs(peticion - discoOrigpaq1);
 
             if (distanciaEsp1 < distanciaOrig1) {
-                puntoInicio = distanciaEsp1;
+                puntoInicio = discoEsppaq1;
                 band = 2;
             } else {
-                puntoInicio = distanciaOrig1;
+                puntoInicio = discoOrigpaq1;
                 band = 3;
             }
         }
@@ -68,15 +68,16 @@ for (i = 0; i !== cantPet; i++) {
             distanciaOrig0 = Math.abs(peticion - discoOrigpaq0);
 
             if (distanciaEsp0 < distanciaOrig0) {
-                puntoInicio = distanciaEsp0;
+                puntoInicio = discoEsppaq0;
                 band = 5;
             } else {
-                puntoInicio = distanciaOrig0;
+                puntoInicio = discoOrigpaq0;
                 band = 6;
             }
         }
     }
 
+    console.log(`band: ${band}`);
     let cylEstoy = Math.floor(puntoInicio / sectoresXCilindro);
     let secEstoy = puntoInicio % sectoresXCilindro;
     let cylVoy = Math.floor(sectorMeta / sectoresXCilindro);
@@ -122,28 +123,28 @@ for (i = 0; i !== cantPet; i++) {
     console.log(`SEARCHTIME: ${searchTime} (redondea esrte poutput manual)`);
     searchTime = parseFloat(prompt("Refonfear manualmente", "FAIL"));
     console.log(`SEARCHTIME BIEN: ${searchTime} `);
+    console.log(`ACCESS TIME: ${parseFloat(seekTime)+parseFloat(searchTime)}`);
 
-    switch (band)
-    {
+    switch (band) {
         case 1:
             discoOrigpaq1 = sectorMeta;
             discoEsppaq1 = sectorMeta;
-        break;
+            break;
         case 2:
             discoEsppaq1 = sectorMeta;
-        break;
+            break;
         case 3:
             discoOrigpaq1 = sectorMeta;
-        break;
+            break;
         case 4:
             discoOrigpaq0 = sectorMeta;
             discoEsppaq0 = sectorMeta;
-        break;
+            break;
         case 5:
-            discoEsppaq0= sectorMeta;
-        break;
+            discoEsppaq0 = sectorMeta;
+            break;
         case 6:
-            discoOrigpaq0= sectorMeta;
-        break;
+            discoOrigpaq0 = sectorMeta;
+            break;
     }
 }
