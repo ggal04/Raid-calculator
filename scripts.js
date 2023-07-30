@@ -21,7 +21,7 @@ let cantPet = parseInt(prompt("CUANTAS PETICIONES", "FAIL"), 10);
 for (i = 0; i < cantPet; i++) {
     let peticion = parseInt(
         prompt(
-            "Peticion en numeros (si te dan sectores y cilindfros, TODO TODO TODO TODO:",
+            "Peticion en numeros",
             "FAIL"
         ),
         10
@@ -120,7 +120,7 @@ for (i = 0; i < cantPet; i++) {
     unSector = console.log(
         `Un sector: ${unSector} ms (ver este output manualmente)`
     );
-    unSector = parseFloat(prompt("Refonfear un sector manualmente", "FAIL"));
+    unSector = parseFloat(prompt("Redondear un sector manualmente", "FAIL"));
 
     console.log(`UN SECTOR BIEN: ${unSector} ms`);
 
@@ -140,8 +140,8 @@ for (i = 0; i < cantPet; i++) {
     } else {
         searchTime = (nuevoSecVoy - nuevoSecEstoy) * unSector;
     }
-    console.log(`SEARCHTIME: ${searchTime} (redondea esrte poutput manual)`);
-    searchTime = parseFloat(prompt("Refonfear manualmente", "FAIL"));
+    console.log(`SEARCHTIME: ${searchTime} (redondea este output manualmente)`);
+    searchTime = parseFloat(prompt("Redondear manualmente", "FAIL"));
     console.log(`SEARCHTIME BIEN: ${searchTime} `);
     console.log(
         `ACCESS TIME: ${parseFloat(seekTime) + parseFloat(searchTime)}`
